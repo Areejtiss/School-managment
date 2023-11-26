@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etudiant index{% endblock %}
+
+{% block body %}
+    <h1>Etudiant index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Id</th>
+                <th>Matricule</th>
+                <th>Nom</th>
+                <th>classe</th> 
+                <th>Prenom</th>
+                <th>DateNaiss</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etudiant in etudiants %}
+            <tr>
+                <td><img class="rounded-circle" width="50" height="50"
+style="border-radius:75px" src="{{ asset('uploads/imagesEtudiants/' ~
+etudiant.imageFilename) }}" alt="">
+ </td>
+                <td>{{ etudiant.id }}</td>
+                <td>{{ etudiant.matricule }}</td>
+                <td>{{ etudiant.nom }}</td>
+                <td>{{ etudiant.classroom.nom }}</td> 
+                <td>{{ etudiant.prenom }}</td>
+                <td>{{ etudiant.dateNaiss ? etudiant.dateNaiss|date('Y-m-d') : '' }}</td>
+                <td>{{ etudiant.Email }}</td>
+                <td>
+                    <a href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}">show</a>
+                    <a href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_etudiant_new') }}">Create new</a>
+{% endblock %}

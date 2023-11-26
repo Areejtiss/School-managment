@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BootStarapController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>{{ch|upper }}</h1>
+    <h1>{{ch|capitalize}}</h1>
+    {% set sum = 0 %}
+   <h1> {% for i in 0..10 %} 
+     {% if i is odd %}
+        {% set sum = sum + i %}
+       
+    {% endif %}
+    
+    {% endfor %}
+     {{sum}}</h1>
+     <h1>{% set somme = 0 %}
+    {% for j in 0..10 %} 
+     {% if j is even %}
+        {% set somme = somme + j %}
+       
+    {% endif %}
+    
+    {% endfor %}
+     {{somme}} </h1>
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/SymfonyProject/GesSco/src/Controller/BootStarapController.php'|file_link(0) }}">src/Controller/BootStarapController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/SymfonyProject/GesSco/templates/boot_starap/index.html.twig'|file_link(0) }}">templates/boot_starap/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
